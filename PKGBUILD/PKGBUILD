@@ -1,52 +1,16 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
+# Maintainer: Pedro Freitas <pedrosffreitas@gmail.com>
 
-# Maintainer: Your Name <youremail@domain.com>
-pkgname=NAME
-pkgver=VERSION
+pkgname=ix
+pkgver=0.1
 pkgrel=1
-epoch=
-pkgdesc=""
-arch=()
-url=""
-license=('GPL')
-groups=()
-depends=()
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("$pkgname-$pkgver.tar.gz"
-        "$pkgname-$pkgver.patch")
-noextract=()
-md5sums=()
-validpgpkeys=()
-
-prepare() {
-	cd "$pkgname-$pkgver"
-	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-}
-
-build() {
-	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr
-	make
-}
-
-check() {
-	cd "$pkgname-$pkgver"
-	make -k check
-}
+pkgdesc="A ix client command line."
+arch=('i686' 'x86_64')
+url="https://github.com/PedroSFreitas/ix-client"
+license=('unknown')
+depends=('python2')
+source=("https://github.com/PedroSFreitas/ix-client/blob/master/PKGBUILD/$pkgname-$pkgver.tar.gz")
+md5sums=('SKIP')
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+	install -dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
 }
